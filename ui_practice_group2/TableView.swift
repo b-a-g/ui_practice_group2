@@ -13,9 +13,16 @@ class TableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+		
+		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
+		cell.textLabel?.text = "Hallo"
+		cell.detailTextLabel?.text = " cell"
+		cell.imageView?.image = UIImage(systemName: "mail")
+		//cell.largeContentImage = UIImage(systemName: "mail")
+		return cell
+     
     }
-    
+	
 
     /*
     // Only override draw() if you perform custom drawing.

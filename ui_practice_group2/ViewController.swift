@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         self.artistSchedule?.append(ArtistSchedule(artistName: "Полина Гагарина", schedule: [
                                                     "Новосибирск, Россия" : Date(timeIntervalSince1970: 1622559600000),
@@ -26,6 +27,8 @@ class ViewController: UIViewController {
         
         self.view.addSubview(cv)
         self.view.addSubview(tv)
+		tv.delegate = tv
+		tv.dataSource = tv
         
         cv.snp.makeConstraints { (make) in
             make.top.equalToSuperview()

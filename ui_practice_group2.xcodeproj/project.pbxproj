@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		024FBFF69B594A0AF7DFEF7F /* libPods-ui_practice_group2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C094228E7FDAC9C896C0A5B /* libPods-ui_practice_group2.a */; };
+		11F087FD26467924006125E5 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F087FC26467924006125E5 /* TableViewCell.swift */; };
 		49B81A7F26466FB10097C987 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B81A7E26466FB10097C987 /* CustomCollectionViewCell.swift */; };
 		E781A16026465F1A00338615 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E781A15F26465F1A00338615 /* TableView.swift */; };
 		E781A16226465F3800338615 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E781A16126465F3800338615 /* CollectionView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11F087FC26467924006125E5 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		49B81A7E26466FB10097C987 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		76A6DEF0CCAE81F8BAB2EFB1 /* Pods-ui_practice_group2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ui_practice_group2.debug.xcconfig"; path = "Target Support Files/Pods-ui_practice_group2/Pods-ui_practice_group2.debug.xcconfig"; sourceTree = "<group>"; };
 		7C094228E7FDAC9C896C0A5B /* libPods-ui_practice_group2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ui_practice_group2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 				E7E2FCFE264658AD00766AAD /* SceneDelegate.swift */,
 				E7E2FD00264658AD00766AAD /* ViewController.swift */,
 				E781A15F26465F1A00338615 /* TableView.swift */,
+				11F087FC26467924006125E5 /* TableViewCell.swift */,
 				E781A16126465F3800338615 /* CollectionView.swift */,
 				49B81A7E26466FB10097C987 /* CustomCollectionViewCell.swift */,
 				E781A1632646618200338615 /* ArtistSchedule.swift */,
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E781A1642646618200338615 /* ArtistSchedule.swift in Sources */,
+				11F087FD26467924006125E5 /* TableViewCell.swift in Sources */,
 				49B81A7F26466FB10097C987 /* CustomCollectionViewCell.swift in Sources */,
 				E7E2FD01264658AD00766AAD /* ViewController.swift in Sources */,
 				E781A16226465F3800338615 /* CollectionView.swift in Sources */,
@@ -270,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -325,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -342,7 +346,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 243DG349TX;
+				DEVELOPMENT_TEAM = 95ZUNS462R;
 				INFOPLIST_FILE = ui_practice_group2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -362,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 243DG349TX;
+				DEVELOPMENT_TEAM = 95ZUNS462R;
 				INFOPLIST_FILE = ui_practice_group2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
