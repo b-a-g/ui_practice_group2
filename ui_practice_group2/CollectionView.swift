@@ -10,6 +10,7 @@ import UIKit
 class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	
 	var data: [String] = []
+    var currentItem: ((_: String) -> Void)?
 	
 	func setData(_ data: String) {
 		self.data.append(data)
@@ -59,6 +60,7 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
 		guard let collectionCell = cell else { return UICollectionViewCell() }
 		collectionCell.artistName.text = data[indexPath.row]
 		collectionCell.backgroundColor = .blue
+        self.currentItem?(data[indexPath.row])
 		return collectionCell
     }
 

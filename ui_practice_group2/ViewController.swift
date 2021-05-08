@@ -31,9 +31,19 @@ class ViewController: UIViewController {
 
 		setConstraints()
         
+        self.cv.currentItem = { [weak self] name in
+            self?.updateTable(name: name)
+        }
 		tv.backgroundColor = .yellow
     }
 
+    private func updateTable(name: String) {
+        artistSchedule.forEach { artist in
+            if name == artist.artistName {
+//                self.tv.updateData(data: artist.schedule)
+            }
+        }
+    }
 
 	private func setConstraints() {
 		self.view.addSubview(cv)
