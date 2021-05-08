@@ -34,13 +34,12 @@ class ViewController: UIViewController {
         self.cv.currentItem = { [weak self] name in
             self?.updateTable(name: name)
         }
-		tv.backgroundColor = .yellow
     }
 
     private func updateTable(name: String) {
         artistSchedule.forEach { artist in
             if name == artist.artistName {
-//                self.tv.updateData(data: artist.schedule)
+				self.tv.setData(artist.schedule)
             }
         }
     }

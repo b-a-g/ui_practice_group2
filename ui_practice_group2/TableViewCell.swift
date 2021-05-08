@@ -4,8 +4,8 @@
 //
 //  Created by Никита on 08.05.2021.
 //
-import Foundation
 import UIKit
+import SnapKit
 
 
 
@@ -20,6 +20,7 @@ class TableViewCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		setConstraints()
+		
 	}
 
 	
@@ -29,6 +30,16 @@ class TableViewCell: UITableViewCell {
 	
 	private func setConstraints() {
 		
+		self.addSubview(cityLabel)
+		self.cityLabel.snp.makeConstraints{ make in
+			make.center.equalToSuperview()
+		}
+		
+		self.addSubview(timeLabel)
+		self.timeLabel.snp.makeConstraints{ make in
+			make.top.equalTo(cityLabel.snp.bottom).offset(8)
+			make.centerX.equalToSuperview()
+		}
 	}
 
 	

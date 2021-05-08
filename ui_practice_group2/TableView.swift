@@ -10,43 +10,57 @@ import UIKit
 class TableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
 	var data: [String: Date] = [:]
+	var keyData : [String] = []
+	var valueData : [String] = []
+	
+
     
     func setData(_ data: [String: Date]) {
         self.data = data
+		keyData = []
+		valueData = []
+		let formatter = DateFormatter()
+		formatter.dateStyle = .short
+		
+		
+		for (key, value) in data {
+			keyData.append(key)
+			valueData.append(formatter.string(from: value))
+		}
+		reloadData()
+	
     }
 	
 	init() {
 		print("table")
-
-	
-		super.init(frame: .zero, style: .plain)
 		
+		super.init(frame: .zero, style: .plain)
 		self.delegate = self
+		self.dataSource = self
 		self.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
-
+		self.rowHeight = 90
+		self.separatorStyle = .none
+	
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if let data = self.data {
-//            return data.count
-//        } else {
-//            return 0
-//        }
-        return 4
-    }
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return data.count
+	}
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! TableViewCell
-		//let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
-		cell.cityLabel.text = "Hallo"
-//		cell.textLabel?.text = "Hallo"
-//		cell.detailTextLabel?.text = " cell"
-		//cell.imageView?.image = UIImage(systemName: "mail")
-		//cell.largeContentImage = UIImage(systemName: "mail")
+		
+		cell.backgroundColor = .blue
+		let city = keyData[indexPath.row]
+		let time = valueData[indexPath.row]
+		cell.cityLabel.text = city
+	
+		cell.timeLabel.text = time
+		
 		return cell
      
     }
@@ -60,4 +74,14 @@ class TableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     */
 
+}
+
+extension Date {
+	var millisecondsSince1970:Int64 {
+		return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+	}
+
+	init(milliseconds:Int64) {
+		self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
+	}
 }

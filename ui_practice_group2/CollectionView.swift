@@ -60,9 +60,14 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
 		guard let collectionCell = cell else { return UICollectionViewCell() }
 		collectionCell.artistName.text = data[indexPath.row]
 		collectionCell.backgroundColor = .blue
-        self.currentItem?(data[indexPath.row])
+		
+      //  self.currentItem?(data[indexPath.row])
 		return collectionCell
     }
+	
+	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+			self.currentItem?(data[indexPath.row])
+		}
 
 
 }
