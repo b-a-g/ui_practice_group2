@@ -7,35 +7,56 @@
 
 import UIKit
 
-extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
+class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+	
+	var data: [String] = []
+	
+	func setData(_ data: String) {
+		self.data.append(data)
+	}
+	
+    init() {
+        let layout = UICollectionViewFlowLayout()
+		layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
 
+		super.init(frame: .infinite, collectionViewLayout: layout)
+
+		self.delegate = self
+		self.dataSource = self
+		
+		self.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+		self.isScrollEnabled = true
+		self.showsHorizontalScrollIndicator = true
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.isPagingEnabled = true
+		self.isScrollEnabled = true
+
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+	
 	func collectionView(_ collectionView: UICollectionView,
 						layout collectionViewLayout: UICollectionViewLayout,
 						sizeForItemAt indexPath: IndexPath) -> CGSize {
-		
-		return CGSize(width: cv.frame.width, height: cv.frame.height)
+		return CGSize(width: self.frame.width, height: self.frame.height)
+
 	}
 	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		print(#function)
-	
-        return 5
+		return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		print(#function)
 
-		let cell = cv.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier,
-										  for: indexPath) as! CustomCollectionViewCell
-//		guard let model = artistSchedule else { return UICollectionViewCell() }
-//		cell.label.text = model[indexPath.row].artistName
-//		cell.label.text = "jnbhjbjkbj"
-		print(artistSchedule)
-
-			cell.label.text = "work"
-		
-		cell.label.backgroundColor = .blue
-		return cell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell
+		guard let collectionCell = cell else { return UICollectionViewCell() }
+		collectionCell.artistName.text = data[indexPath.row]
+		collectionCell.backgroundColor = .blue
+		return collectionCell
     }
 
 

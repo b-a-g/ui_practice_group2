@@ -9,43 +9,30 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-	let cv: UICollectionView = {
-		let layout = UICollectionViewFlowLayout()
-		layout.scrollDirection = .horizontal
-		layout.minimumLineSpacing = 0
-		layout.minimumInteritemSpacing = 0
-//		layout.itemSize = CGSize(width: self.frame.width, height: self.frame.height)
-
-		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-		collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
-		collectionView.isScrollEnabled = true
-		collectionView.showsHorizontalScrollIndicator = true
-		collectionView.translatesAutoresizingMaskIntoConstraints = false
-		collectionView.isPagingEnabled = true
-		collectionView.isScrollEnabled = true
-		return collectionView
-	}()
-	
+	let cv = CollectionView()
 	let tv = TableView()
 
-    var artistSchedule: [ArtistSchedule]?
+    var artistSchedule: [ArtistSchedule] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		cv.delegate = self
-		cv.dataSource = self
         
-        self.artistSchedule?.append(ArtistSchedule(artistName: "Полина Гагарина", schedule: [
+        self.artistSchedule.append(ArtistSchedule(artistName: "Полина Гагарина", schedule: [
                                                     "Новосибирск, Россия" : Date(timeIntervalSince1970: 1622559600000),
                                                     "Воронеж, Россия" : Date(timeIntervalSince1970: 1622905200000)]))
-        self.artistSchedule?.append(ArtistSchedule(artistName: "ABBA", schedule: [
+        self.artistSchedule.append(ArtistSchedule(artistName: "ABBA", schedule: [
                                                     "Москва, Россия" : Date(timeIntervalSince1970: 123)]))
+		artistSchedule.forEach{ artist in
+			cv.setData(artist.artistName)
+		}
+		cv.reloadData()
+
+		
 		setConstraints()
         
-        
-        cv.backgroundColor = .green
-        tv.backgroundColor = .yellow
+		tv.backgroundColor = .yellow
+		cv.backgroundColor = .green
     }
 
 
