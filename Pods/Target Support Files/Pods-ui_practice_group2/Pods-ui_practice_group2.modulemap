@@ -1,0 +1,6 @@
+module Pods_ui_practice_group2 {
+  umbrella header "Pods-ui_practice_group2-umbrella.h"
+
+  export *
+  module * { export * }
+}
