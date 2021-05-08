@@ -7,44 +7,62 @@
 
 import UIKit
 
-class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
+class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+	
+	var data: [String] = []
+    var currentItem: ((_: String) -> Void)?
+	
+	func setData(_ data: String) {
+		self.data.append(data)
+	}
 	
     init() {
-		print("Collection")
-//		collectionView.delegate = self
-//
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+		layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-		super.init(frame: .zero, collectionViewLayout: layout)
+
+		super.init(frame: .infinite, collectionViewLayout: layout)
+
 		self.delegate = self
-		self.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+		self.dataSource = self
 		
+		self.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+		self.isScrollEnabled = true
+		self.showsHorizontalScrollIndicator = true
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.isPagingEnabled = true
+		self.isScrollEnabled = true
+		
+		self.layer.cornerRadius = 20
+		self.clipsToBounds = true
 
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+	
+	func collectionView(_ collectionView: UICollectionView,
+						layout collectionViewLayout: UICollectionViewLayout,
+						sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return CGSize(width: self.frame.width, height: self.frame.height)
+
+	}
+	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+		return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
-		cell.label.text = "FFFFFFFFFFF"
-		return cell
-    }
-    
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell
+		guard let collectionCell = cell else { return UICollectionViewCell() }
+		collectionCell.artistName.text = data[indexPath.row]
+		collectionCell.backgroundColor = .blue
+        self.currentItem?(data[indexPath.row])
+		return collectionCell
     }
-    */
+
 
 }
