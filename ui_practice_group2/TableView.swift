@@ -7,9 +7,9 @@
 
 import UIKit
 
-class TableView: UITableView, UITableViewDelegate, UITableViewDataSource, UITableViewDelegateFlowLayout{
+class TableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    var data: [String: Date]?
+	var data: [String: Date] = [:]
     
     func setData(_ data: [String: Date]) {
         self.data = data
@@ -18,14 +18,11 @@ class TableView: UITableView, UITableViewDelegate, UITableViewDataSource, UITabl
 	init() {
 		print("table")
 
-		let layout = UITableView
-		layout.scrollDirection = .horizontal
-		layout.minimumLineSpacing = 0
-		layout.minimumInteritemSpacing = 0
-		super.init(frame: .zero, collectionViewLayout: layout)
-		self.delegate = self
-		self.register(TableViewCell.self, forCellWithReuseIdentifier: TableViewCell.identifier)
+	
+		super.init(frame: .zero, style: .plain)
 		
+		self.delegate = self
+		self.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
 
 	}
 
