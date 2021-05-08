@@ -32,6 +32,9 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.isPagingEnabled = true
 		self.isScrollEnabled = true
+		
+		self.layer.cornerRadius = 20
+		self.clipsToBounds = true
 
     }
 

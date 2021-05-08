@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        
+		self.view.backgroundColor = .white
+		
         self.artistSchedule.append(ArtistSchedule(artistName: "Полина Гагарина", schedule: [
                                                     "Новосибирск, Россия" : Date(timeIntervalSince1970: 1622559600000),
                                                     "Воронеж, Россия" : Date(timeIntervalSince1970: 1622905200000)]))
@@ -28,11 +29,9 @@ class ViewController: UIViewController {
 		}
 		cv.reloadData()
 
-		
 		setConstraints()
         
 		tv.backgroundColor = .yellow
-		cv.backgroundColor = .green
     }
 
 
