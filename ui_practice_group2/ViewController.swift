@@ -9,13 +9,32 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-	let cv = CollectionView()
+	let cv: UICollectionView = {
+		let layout = UICollectionViewFlowLayout()
+		layout.scrollDirection = .horizontal
+		layout.minimumLineSpacing = 0
+		layout.minimumInteritemSpacing = 0
+//		layout.itemSize = CGSize(width: self.frame.width, height: self.frame.height)
+
+		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+		collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+		collectionView.isScrollEnabled = true
+		collectionView.showsHorizontalScrollIndicator = true
+		collectionView.translatesAutoresizingMaskIntoConstraints = false
+		collectionView.isPagingEnabled = true
+		collectionView.isScrollEnabled = true
+		return collectionView
+	}()
+	
 	let tv = TableView()
 
     var artistSchedule: [ArtistSchedule]?
         
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		cv.delegate = self
+		cv.dataSource = self
         
         self.artistSchedule?.append(ArtistSchedule(artistName: "Полина Гагарина", schedule: [
                                                     "Новосибирск, Россия" : Date(timeIntervalSince1970: 1622559600000),

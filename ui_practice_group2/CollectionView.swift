@@ -7,42 +7,13 @@
 
 import UIKit
 
-class CollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
-	
-	private var model = ViewController().artistSchedule
-	
-    init() {
-		print("Collection")
-//		collectionView.delegate = self
-//
-        let layout = UICollectionViewFlowLayout()
-		layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-//		layout.itemSize = CGSize(width: self.frame.width, height: self.frame.height)
+extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
 
-		super.init(frame: .zero, collectionViewLayout: layout)
-
-		self.delegate = self
-		self.dataSource = self
-		self.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
-		self.isScrollEnabled = true
-		self.showsHorizontalScrollIndicator = true
-		self.translatesAutoresizingMaskIntoConstraints = false
-		self.isPagingEnabled = true
-		self.isScrollEnabled = true
-
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-	
 	func collectionView(_ collectionView: UICollectionView,
 						layout collectionViewLayout: UICollectionViewLayout,
 						sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
-		return CGSize(width: self.frame.width, height: self.frame.height)
+		return CGSize(width: cv.frame.width, height: cv.frame.height)
 	}
 	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,19 +25,18 @@ class CollectionView: UICollectionView, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		print(#function)
 
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
-		cell.label.text = model?.first?.artistName
-//		cell.backgroundColor = .blue
+		let cell = cv.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier,
+										  for: indexPath) as! CustomCollectionViewCell
+//		guard let model = artistSchedule else { return UICollectionViewCell() }
+//		cell.label.text = model[indexPath.row].artistName
+//		cell.label.text = "jnbhjbjkbj"
+		print(artistSchedule)
+
+			cell.label.text = "work"
+		
+		cell.label.backgroundColor = .blue
 		return cell
     }
-    
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

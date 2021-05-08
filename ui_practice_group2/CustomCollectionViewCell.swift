@@ -16,7 +16,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
 		override init(frame: CGRect) {
 			super.init(frame: frame)
 			
-			self.contentView.backgroundColor = .red
+//			self.contentView.backgroundColor = .red
 			
 			setConstraints()
 		}
