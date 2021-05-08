@@ -7,13 +7,31 @@
 
 import UIKit
 
-class TableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+class TableView: UITableView, UITableViewDelegate, UITableViewDataSource, UITableViewDelegateFlowLayout{
     
     var data: [String: Date]?
     
     func setData(_ data: [String: Date]) {
         self.data = data
     }
+	
+	init() {
+		print("table")
+
+		let layout = UITableView
+		layout.scrollDirection = .horizontal
+		layout.minimumLineSpacing = 0
+		layout.minimumInteritemSpacing = 0
+		super.init(frame: .zero, collectionViewLayout: layout)
+		self.delegate = self
+		self.register(TableViewCell.self, forCellWithReuseIdentifier: TableViewCell.identifier)
+		
+
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        if let data = self.data {
@@ -25,7 +43,7 @@ class TableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! TableViewCell
 		//let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
 		cell.cityLabel.text = "Hallo"
 //		cell.textLabel?.text = "Hallo"
