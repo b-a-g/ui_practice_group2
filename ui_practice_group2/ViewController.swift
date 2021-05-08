@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
+	let cv = CollectionView()
+	let tv = TableView()
 
     var artistSchedule: [ArtistSchedule]?
         
@@ -20,9 +22,7 @@ class ViewController: UIViewController {
                                                     "Воронеж, Россия" : Date(timeIntervalSince1970: 1622905200000)]))
         self.artistSchedule?.append(ArtistSchedule(artistName: "ABBA", schedule: [
                                                     "Москва, Россия" : Date(timeIntervalSince1970: 123)]))
-        
-        let cv = CollectionView()
-        let tv = TableView()
+		
         
         self.view.addSubview(cv)
         self.view.addSubview(tv)
