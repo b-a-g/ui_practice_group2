@@ -9,15 +9,16 @@ import UIKit
 
 class TableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
-		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
-		cell.textLabel?.text = "Hallo"
-		cell.detailTextLabel?.text = " cell"
-		cell.imageView?.image = UIImage(systemName: "mail")
+		let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+		//let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
+		cell.cityLabel.text = "Hallo"
+//		cell.textLabel?.text = "Hallo"
+//		cell.detailTextLabel?.text = " cell"
+		//cell.imageView?.image = UIImage(systemName: "mail")
 		//cell.largeContentImage = UIImage(systemName: "mail")
 		return cell
      
