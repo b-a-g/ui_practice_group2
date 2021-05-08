@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
         let vc = ViewController()
-        vc.view.backgroundColor = .red
         window?.rootViewController = vc
     }
     
