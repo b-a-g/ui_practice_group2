@@ -8,7 +8,19 @@
 import UIKit
 
 class TableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+    
+    var data: [String: Date]?
+    
+    func setData(_ data: [String: Date]) {
+        self.data = data
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if let data = self.data {
+//            return data.count
+//        } else {
+//            return 0
+//        }
         return 4
     }
     
