@@ -9,5 +9,5 @@ import Foundation
 
 struct ArtistSchedule {
     var artistName: String
-    var schedule:[String: Date]
+    var schedule: [String: Date]
 }

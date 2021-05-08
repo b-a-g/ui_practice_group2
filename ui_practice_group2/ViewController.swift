@@ -10,12 +10,17 @@ import SnapKit
 
 class ViewController: UIViewController {
 
-    let artistSchedule = ArtistSchedule(artistName: "Полина Гагарина", schedule: [
-                                            "Новосибирск, Россия" : Date(timeIntervalSince1970: 1622559600000),
-                                            "Воронеж, Россия" : Date(timeIntervalSince1970: 1622905200000)])
-
+    var artistSchedule: [ArtistSchedule]?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.artistSchedule?.append(ArtistSchedule(artistName: "Полина Гагарина", schedule: [
+                                                    "Новосибирск, Россия" : Date(timeIntervalSince1970: 1622559600000),
+                                                    "Воронеж, Россия" : Date(timeIntervalSince1970: 1622905200000)]))
+        self.artistSchedule?.append(ArtistSchedule(artistName: "ABBA", schedule: [
+                                                    "Москва, Россия" : Date(timeIntervalSince1970: 123)]))
+        
         let cv = CollectionView()
         let tv = TableView()
         
