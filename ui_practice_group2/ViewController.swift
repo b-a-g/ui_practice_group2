@@ -10,6 +10,10 @@ import SnapKit
 
 class ViewController: UIViewController {
 
+    let artistSchedule = ArtistSchedule(artistName: "Полина Гагарина", schedule: [
+                                            "Новосибирск, Россия" : Date(timeIntervalSince1970: 1622559600000),
+                                            "Воронеж, Россия" : Date(timeIntervalSince1970: 1622905200000)])
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let cv = CollectionView()
