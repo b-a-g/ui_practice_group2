@@ -16,13 +16,12 @@ class TableViewCell: UITableViewCell {
 	let cityLabel = UILabel()
 	let timeLabel = UILabel()
 	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		
-		setConstraints()
-					
 	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		setConstraints()
 	}
+
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
@@ -30,7 +29,7 @@ class TableViewCell: UITableViewCell {
 	
 	private func setConstraints() {
 		
-		}
+	}
 
 	
 //
