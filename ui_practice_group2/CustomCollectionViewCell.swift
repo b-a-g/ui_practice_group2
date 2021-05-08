@@ -27,15 +27,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
 		
 		private func setConstraints() {
 			contentView.addSubview(label)
-			print("GGGGG")
-			label.backgroundColor = .red
-			
 			
 			label.snp.makeConstraints { make in
-				make.bottom.top.right.left.equalToSuperview()
+				make.bottom.top.left.right.equalToSuperview()
 			}
-			
-	//		imageView.image = UIImage(named: "heart")
 		}
 
 }
