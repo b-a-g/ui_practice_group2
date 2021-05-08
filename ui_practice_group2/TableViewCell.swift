@@ -16,10 +16,17 @@ class TableViewCell: UITableViewCell {
 	let cityLabel = UILabel()
 	let timeLabel = UILabel()
 	
-	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		
+		self.layer.cornerRadius = 10
+		self.clipsToBounds = true
 		setConstraints()
+		
+		[cityLabel,timeLabel].forEach { label in
+			label.textColor = .white
+			label.font = UIFont.systemFont(ofSize: 20)
+		}
 		
 	}
 
@@ -29,7 +36,7 @@ class TableViewCell: UITableViewCell {
 	}
 	
 	private func setConstraints() {
-		
+	
 		self.addSubview(cityLabel)
 		self.cityLabel.snp.makeConstraints{ make in
 			make.center.equalToSuperview()

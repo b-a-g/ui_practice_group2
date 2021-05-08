@@ -57,8 +57,9 @@ class ViewController: UIViewController {
 		}
 		
 		tv.snp.makeConstraints { (make) in
-			make.top.equalTo(cv.snp_bottomMargin).offset(10)
-			make.trailing.leading.equalToSuperview()
+			make.top.equalTo(cv.snp_bottomMargin).offset(30)
+			make.left.equalToSuperview().offset(40)
+			make.right.equalToSuperview().offset(-40)
 			make.height.equalTo((self.view.bounds.height / 3) * 2)
 		}
 		
